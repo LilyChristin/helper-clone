@@ -30,20 +30,45 @@ body {
 
 .header {
   padding: 40px 0;
-  background-color: lemonchiffon;
+  background-color:#92cccd;
+  color: #fff;
 }
 
 .main {
   padding: 30px 0;
 }
 
+.main__content {
+  padding: 30px;
+}
+
+.main__code pre {
+  border: 1px solid #ccc;
+  padding: 20px 0;
+}
+
+.main__code pre:not(:last-child){
+  margin-bottom: 40px;
+}
+
+.nav li {
+  background-color:	#dff0ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.nav li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 /*--------------------------------------*/
 
 label {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
   /* Отступ для check-style*/
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .check-box {
@@ -61,7 +86,7 @@ label {
   height: 16px;
   border: 2px solid #000;
   /* Отступ */
-  margin-left: -20px;
+  margin-left: -30px;
 }
 
 /* Стили для checked checkbox */
@@ -75,6 +100,11 @@ label {
   height: 8px;
   background-color: #000;
 }
+
+/* Стилизация иконкой, вместо before
+.check-box:checked + .check-style {
+  background-image: url();
+} */
 
 /* Стили для disabled checkbox */
 .check-box:disabled + .check-style {
@@ -90,3 +120,59 @@ label {
 .check-box:focus + .check-style {
   box-shadow: 0 0 0 1px #000;
 }
+
+/*--------------------------------------*/
+
+.radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.radio-style {
+  /* Любые стили по макету */
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  /* Отступ */
+  margin-left: -30px;
+}
+
+/* Стили для checked radio */
+.radio:checked + .radio-style::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+/* Стилизация иконкой, вместо before
+.radio:checked + .radio-style {
+  background-image: url();
+} */
+
+/* Стили для disabled radio */
+.radio:disabled + .radio-style {
+  border-color: #ccc;
+}
+
+/* Стили для checked disabled radio */
+.radio:checked:disabled + .radio-style::before {
+  background-color: #ccc;
+}
+
+/* Стили, когда radio в фокусе */
+.radio:focus + .radio-style {
+  box-shadow: 0 0 0 1px #000;
+}
+
+

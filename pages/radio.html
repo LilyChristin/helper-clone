@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>Стилизация radio</title>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Стилизация radio</h1>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <div class="main__content">
+        <label>
+          <input class="radio" type="radio">
+          <span class="radio-style"></span> radio
+        </label>
+        
+        <label>
+          <input class="radio" type="radio" checked>
+          <span class="radio-style"></span> checked radio
+        </label>
+        
+        <label>
+          <input class="radio" type="radio" disabled>
+          <span class="radio-style"></span> disabled radio
+        </label>
+        
+        <label>
+          <input class="radio" type="radio" checked disabled>
+          <span class="radio-style"></span> checked disabled radio
+        </label>
+      </div>
+      <div class="main__code">
+        <h4>html</h4>
+        <pre>
+          &lt;label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio"</span>&nbsp;type=<span style="color: #A31515;">"radio"</span>&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio-style"</span>&gt;&lt;/span&gt;&nbsp;radio
+          &lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &lt;label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio"</span>&nbsp;type=<span style="color: #A31515;">"radio"</span>&nbsp;<span style="color: #0000FF;">checked</span>&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio-style"</span>&gt;&lt;/span&gt;&nbsp;<span style="color: #0000FF;">checked</span>&nbsp;radio
+          &lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &lt;label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio"</span>&nbsp;type=<span style="color: #A31515;">"radio"</span>&nbsp;disabled&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio-style"</span>&gt;&lt;/span&gt;&nbsp;disabled&nbsp;radio
+          &lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &lt;label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio"</span>&nbsp;type=<span style="color: #A31515;">"radio"</span>&nbsp;<span style="color: #0000FF;">checked</span>&nbsp;disabled&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;<span style="color: #0000FF;">class</span>=<span style="color: #A31515;">"radio-style"</span>&gt;&lt;/span&gt;&nbsp;<span style="color: #0000FF;">checked</span>&nbsp;disabled&nbsp;radio
+          &lt;/label&gt;</pre>
+
+        <h4>css</h4>
+        <pre>
+          label&nbsp;{
+          &nbsp;&nbsp;display:&nbsp;flex;
+          &nbsp;&nbsp;align-items:&nbsp;center;
+          &nbsp;&nbsp;margin-bottom:&nbsp;20px;
+          &nbsp;&nbsp;<span style="color: #008000;">/* Отступ для check-style*/</span>
+          &nbsp;&nbsp;padding-left:&nbsp;30px;
+          }
+          &nbsp;
+          .radio&nbsp;{
+          &nbsp;&nbsp;position:&nbsp;absolute;
+          &nbsp;&nbsp;width:&nbsp;1px;
+          &nbsp;&nbsp;height:&nbsp;1px;
+          &nbsp;&nbsp;overflow:&nbsp;hidden;
+          &nbsp;&nbsp;clip:&nbsp;rect(0&nbsp;0&nbsp;0&nbsp;0);
+          }
+          &nbsp;
+          .radio-style&nbsp;{
+          &nbsp;&nbsp;<span style="color: #008000;">/* Любые стили по макету */</span>
+          &nbsp;&nbsp;position:&nbsp;absolute;
+          &nbsp;&nbsp;width:&nbsp;16px;
+          &nbsp;&nbsp;height:&nbsp;16px;
+          &nbsp;&nbsp;border:&nbsp;2px&nbsp;solid&nbsp;#000;
+          &nbsp;&nbsp;border-radius:&nbsp;50%;
+          &nbsp;&nbsp;<span style="color: #008000;">/* Отступ */</span>
+          &nbsp;&nbsp;margin-left:&nbsp;-30px;
+          }
+          &nbsp;
+          <span style="color: #008000;">/* Стили для checked radio */</span>
+          .radio:<span style="color: #0000FF;">checked</span>&nbsp;+&nbsp;.radio-style::before&nbsp;{
+          &nbsp;&nbsp;content:&nbsp;<span style="color: #A31515;">""</span>;
+          &nbsp;&nbsp;position:&nbsp;absolute;
+          &nbsp;&nbsp;top:&nbsp;50%;
+          &nbsp;&nbsp;left:&nbsp;50%;
+          &nbsp;&nbsp;transform:&nbsp;translate(-50%,&nbsp;-50%);
+          &nbsp;&nbsp;width:&nbsp;8px;
+          &nbsp;&nbsp;height:&nbsp;8px;
+          &nbsp;&nbsp;border-radius:&nbsp;50%;
+          &nbsp;&nbsp;background-color:&nbsp;#000;
+          }
+          &nbsp;
+          <span style="color: #008000;">/* Стилизация иконкой, вместо before
+          .radio:checked + .radio-style {
+            background-image: url();
+          } */</span>
+          &nbsp;
+          <span style="color: #008000;">/* Стили для disabled radio */</span>
+          .radio:disabled&nbsp;+&nbsp;.radio-style&nbsp;{
+          &nbsp;&nbsp;border-color:&nbsp;#ccc;
+          }
+          &nbsp;
+          <span style="color: #008000;">/* Стили для checked disabled radio */</span>
+          .radio:<span style="color: #0000FF;">checked</span>:disabled&nbsp;+&nbsp;.radio-style::before&nbsp;{
+          &nbsp;&nbsp;background-color:&nbsp;#ccc;
+          }
+          &nbsp;
+          <span style="color: #008000;">/* Стили, когда radio в фокусе */</span>
+          .radio:focus&nbsp;+&nbsp;.radio-style&nbsp;{
+          &nbsp;&nbsp;box-shadow:&nbsp;0&nbsp;0&nbsp;0&nbsp;1px&nbsp;#000;
+          }</pre>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
